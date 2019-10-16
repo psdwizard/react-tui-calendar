@@ -40,15 +40,23 @@ function App() {
   //Sample schedule
   const [schedule, setSchedule] = useState([
     {
-        id: '1',
-        calendarId: '1',
-        title: 'my schedule',
-        category: 'time',
-        dueDateClass: '',
-        start: '2019-10-18T22:30:00+09:00',
-        end: '2019-10-19T02:30:00+09:00'
+      id: '1',
+      calendarId: '1',
+      title: 'my schedule',
+      category: 'time',
+      dueDateClass: '',
+      start: '2019-10-18T22:30:00+09:00',
+      end: '2019-10-19T02:30:00+09:00'
     }
   ])
+
+  //New schedule popup
+  const handleNewSchedule = () => {
+    const calendarInstance = calendarRef.current.getInstance()
+    calendarInstance.openCreationPopup(schedule)
+  }
+
+  //Create new schedule
 
   //Set calendar features/options
   const calendarOptions = {
@@ -80,6 +88,9 @@ function App() {
         <button onClick={handleTodayButton}>Today</button>
       </div>
       <div>Current Date</div>
+      <div>
+        <button onClick={handleNewSchedule}>New Schedule</button>
+      </div>
       <Calendar
         ref={calendarRef}
         {...calendarOptions}
