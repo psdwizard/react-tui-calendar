@@ -41,13 +41,28 @@ function App() {
   const [schedule, setSchedule] = useState([
     {
       id: '1',
-      calendarId: '1',
-      title: 'my schedule',
+      calendarId: '0',
+      title: 'Providers',
       category: 'time',
-      dueDateClass: '',
+      start: '2019-10-01T22:30:00+09:00',
+      end: '2019-10-02T02:30:00+09:00'
+    },
+    {
+      id: '1',
+      calendarId: '1',
+      title: 'Location',
+      category: 'time',
       start: '2019-10-18T22:30:00+09:00',
       end: '2019-10-19T02:30:00+09:00'
-    }
+    },
+    {
+      id: '1',
+      calendarId: '2',
+      title: 'Rooms',
+      category: 'time',
+      start: '2019-10-21T22:30:00+09:00',
+      end: '2019-10-22T02:30:00+09:00'
+    },
   ])
 
   //New schedule popup
@@ -57,6 +72,44 @@ function App() {
   }
 
   //Create new schedule
+
+  //Calendar schedule categories
+  const calendarCat = [
+    {
+      id: '0',
+      name: 'Providers',
+      bgColor: '#9e5fff',
+      borderColor: '#9e5fff'
+    },
+    {
+      id: '1',
+      name: 'Location',
+      bgColor: '#00a9ff',
+      borderColor: '#00a9ff'
+    },
+    {
+      id: '2',
+      name: 'Rooms',
+      bgColor: '#03bd9e',
+      borderColor: '#03bd9e'
+    }
+  ]
+
+  //Filter schedule category
+  const [filterCat, setFilterCat] = useState([
+    {
+      name: 'Providers',
+      check: true
+    },
+    {
+      name: 'Location',
+      check: true
+    },
+    {
+      name: 'Rooms',
+      check: true
+    },
+  ])
 
   //Set calendar features/options
   const calendarOptions = {
@@ -68,10 +121,13 @@ function App() {
     disableClick: false,
     useDetailPopup: true,
     useCreationPopup: true,
-    schedules: schedule
+    schedules: schedule,
+    calendars: calendarCat
   }
 
   console.log(setSchedule)
+  console.log(filterCat)
+  console.log(setFilterCat)
 
   return (
     <div className="App">
@@ -87,9 +143,13 @@ function App() {
       <div>
         <button onClick={handleTodayButton}>Today</button>
       </div>
-      <div>Current Date</div>
       <div>
         <button onClick={handleNewSchedule}>New Schedule</button>
+      </div>
+      <div>
+        <label><input type="checkbox" />Provider</label>
+        <label><input type="checkbox" />Location</label>
+        <label><input type="checkbox" />Room</label>
       </div>
       <Calendar
         ref={calendarRef}
