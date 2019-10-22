@@ -1,7 +1,9 @@
-import React, { useState, createRef } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import './App.css';
 import Calendar from '@toast-ui/react-calendar'
 import 'tui-calendar/dist/tui-calendar.css'
+import 'tui-date-picker/dist/tui-date-picker.css'
+import 'tui-time-picker/dist/tui-time-picker.css'
 
 function App() {
   const calendarRef = createRef()
@@ -65,14 +67,6 @@ function App() {
     },
   ])
 
-  //New schedule popup
-  const handleNewSchedule = () => {
-    const calendarInstance = calendarRef.current.getInstance()
-    calendarInstance.openCreationPopup(schedule)
-  }
-
-  //Create new schedule
-
   //Calendar schedule categories
   const calendarCat = [
     {
@@ -95,6 +89,29 @@ function App() {
     }
   ]
 
+  //New schedule popup
+  const handleNewSchedule = () => {
+    const calendarInstance = calendarRef.current.getInstance()
+    calendarInstance.openCreationPopup(schedule)
+  }
+
+  //Create new schedule
+  const handleCreateSchedule = event => {
+    let copySchedule = schedule
+    const newSchedule = {
+      id: '1',
+      calendarId: event.calendarId,
+      title: event.title,
+      category: 'time',
+      start: event.start,
+      end: event.end
+    }
+
+    copySchedule.push(newSchedule)
+
+    setSchedule([...copySchedule])
+  }
+
   //Filter schedule category
   const [filterCat, setFilterCat] = useState([
     {
@@ -109,7 +126,40 @@ function App() {
       name: 'Rooms',
       check: true
     },
-  ])
+  ])  
+
+  // useEffect(() => {
+  //   let currFilterCat = []    
+  //   let copyCalendarCat = calendarCat
+
+  //   copyCalendarCat.forEach(item => {
+  //     currFilterCat.push({
+  //       name: item.name,
+  //       check: false
+  //     })
+  //   })
+
+  //   setFilterCat(currFilterCat)
+  // }, [])
+
+  const handleFilterCat = catIndex => {
+    let copyFilterCat = filterCat
+
+    copyFilterCat[catIndex].check = !copyFilterCat[catIndex].check
+    setFilterCat([...copyFilterCat])
+  }
+
+  useEffect(() => {
+    const calendarInstance = calendarRef.current.getInstance()
+
+    filterCat.forEach((filter, index) => {
+      if (filter.check === true) {
+        calendarInstance.toggleSchedules(index.toString(), false, true)
+      } else {
+        calendarInstance.toggleSchedules(index.toString(), true, true)
+      }
+    })
+  })
 
   //Set calendar features/options
   const calendarOptions = {
@@ -122,12 +172,9 @@ function App() {
     useDetailPopup: true,
     useCreationPopup: true,
     schedules: schedule,
-    calendars: calendarCat
+    calendars: calendarCat,
+    onBeforeCreateSchedule: handleCreateSchedule
   }
-
-  console.log(setSchedule)
-  console.log(filterCat)
-  console.log(setFilterCat)
 
   return (
     <div className="App">
@@ -147,9 +194,9 @@ function App() {
         <button onClick={handleNewSchedule}>New Schedule</button>
       </div>
       <div>
-        <label><input type="checkbox" />Provider</label>
-        <label><input type="checkbox" />Location</label>
-        <label><input type="checkbox" />Room</label>
+        {filterCat.map((item,index) => (
+          <label key={index}><input type="checkbox" checked={item.check} onChange={() => handleFilterCat(index)}/>{item.name}</label>
+        ))}
       </div>
       <Calendar
         ref={calendarRef}
