@@ -40,32 +40,7 @@ function App() {
   
 
   //Sample schedule
-  const [schedule, setSchedule] = useState([
-    {
-      id: '1',
-      calendarId: '0',
-      title: 'Providers',
-      category: 'time',
-      start: '2019-10-01T22:30:00+09:00',
-      end: '2019-10-02T02:30:00+09:00'
-    },
-    {
-      id: '1',
-      calendarId: '1',
-      title: 'Location',
-      category: 'time',
-      start: '2019-10-18T22:30:00+09:00',
-      end: '2019-10-19T02:30:00+09:00'
-    },
-    {
-      id: '1',
-      calendarId: '2',
-      title: 'Rooms',
-      category: 'time',
-      start: '2019-10-21T22:30:00+09:00',
-      end: '2019-10-22T02:30:00+09:00'
-    },
-  ])
+  const [schedule, setSchedule] = useState([])
 
   //Calendar schedule categories
   const calendarCat = [
@@ -98,6 +73,7 @@ function App() {
   //Create new schedule
   const handleCreateSchedule = event => {
     let copySchedule = schedule
+
     const newSchedule = {
       id: '1',
       calendarId: event.calendarId,
@@ -110,6 +86,12 @@ function App() {
     copySchedule.push(newSchedule)
 
     setSchedule([...copySchedule])
+  }
+
+  //Delete schedule
+  const handleDeleteSchedule = event => {
+
+    console.log(event)
   }
 
   //Filter schedule category
@@ -173,8 +155,15 @@ function App() {
     useCreationPopup: true,
     schedules: schedule,
     calendars: calendarCat,
-    onBeforeCreateSchedule: handleCreateSchedule
+    onBeforeCreateSchedule: handleCreateSchedule,
+    onBeforeDeleteSchedule: handleDeleteSchedule
   }
+
+  useEffect(() => {
+    
+  }, [schedule])
+
+  console.log(schedule)  
 
   return (
     <div className="App">
