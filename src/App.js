@@ -40,7 +40,8 @@ function App() {
   
 
   //Sample schedule
-  const [schedule, setSchedule] = useState([])
+  const [newScheduleList, setNewScheduleList] = useState([])
+  const [scheduleList, setSchedule] = useState([])
 
   //Calendar schedule categories
   const calendarCat = [
@@ -65,17 +66,17 @@ function App() {
   ]
 
   //New schedule popup
-  const handleNewSchedule = () => {
+  const handleNewSchedule = event => {
     const calendarInstance = calendarRef.current.getInstance()
-    calendarInstance.openCreationPopup(schedule)
+    calendarInstance.openCreationPopup(event.schedule)
   }
 
   //Create new schedule
   const handleCreateSchedule = event => {
-    let copySchedule = schedule
+    let copySchedule = newScheduleList
 
-    const newSchedule = {
-      id: '1',
+    let newSchedule = {
+      id: Date.now(),
       calendarId: event.calendarId,
       title: event.title,
       category: 'time',
@@ -85,14 +86,45 @@ function App() {
 
     copySchedule.push(newSchedule)
 
-    setSchedule([...copySchedule])
+    setNewScheduleList([...copySchedule])
   }
 
   //Delete schedule
   const handleDeleteSchedule = event => {
+    const deleteId = event.schedule.id
+    let copySchedule = newScheduleList
 
-    console.log(event)
+    copySchedule.forEach((item, index) => {
+      if (item.id === deleteId) {
+        copySchedule.splice(index, 1)
+      }
+    })
+
+    setNewScheduleList([...copySchedule])
   }
+
+  //Edit schedule
+  const handleUpdateSchedule = event => {
+    console.log(event)
+    // const updatedId = event.schedule.id
+    // let copySchedule = newScheduleList
+
+    // copySchedule.forEach(item => {
+    //   if (item.id === updatedId) {
+    //     item.calendarId = event.schedule.calendarId,
+    //     item.title = event.schedule.title,
+    //     item.start = event.start,
+    //     item.end = event.end
+    //   }
+    // })
+
+    // setNewScheduleList([...copySchedule])
+  }
+
+  //Current Schedule
+  useEffect(() => {
+    setSchedule(newScheduleList)
+  }, [scheduleList, newScheduleList])
 
   //Filter schedule category
   const [filterCat, setFilterCat] = useState([
@@ -153,17 +185,14 @@ function App() {
     disableClick: false,
     useDetailPopup: true,
     useCreationPopup: true,
-    schedules: schedule,
+    schedules: scheduleList,
     calendars: calendarCat,
     onBeforeCreateSchedule: handleCreateSchedule,
+    onBeforeUpdateSchedule: handleUpdateSchedule,
     onBeforeDeleteSchedule: handleDeleteSchedule
   }
 
-  useEffect(() => {
-    
-  }, [schedule])
-
-  console.log(schedule)  
+  console.log(scheduleList)
 
   return (
     <div className="App">
