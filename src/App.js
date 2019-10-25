@@ -105,20 +105,26 @@ function App() {
 
   //Edit schedule
   const handleUpdateSchedule = event => {
-    console.log(event)
-    // const updatedId = event.schedule.id
-    // let copySchedule = newScheduleList
+    const updatedId = event.schedule.id
+    let copySchedule = newScheduleList
+    let updateSchedule
 
-    // copySchedule.forEach(item => {
-    //   if (item.id === updatedId) {
-    //     item.calendarId = event.schedule.calendarId,
-    //     item.title = event.schedule.title,
-    //     item.start = event.start,
-    //     item.end = event.end
-    //   }
-    // })
+    copySchedule.forEach((item, index) => {
+      if (item.id === updatedId) {
+        updateSchedule = {
+          id: event.schedule.id,
+          calendarId: event.schedule.calendarId,
+          title: event.schedule.title,
+          category: 'time',
+          start: event.start,
+          end: event.end
+        }
 
-    // setNewScheduleList([...copySchedule])
+        copySchedule[index] = updateSchedule
+      }
+    })
+
+    setNewScheduleList([...copySchedule])
   }
 
   //Current Schedule
@@ -141,20 +147,6 @@ function App() {
       check: true
     },
   ])  
-
-  // useEffect(() => {
-  //   let currFilterCat = []    
-  //   let copyCalendarCat = calendarCat
-
-  //   copyCalendarCat.forEach(item => {
-  //     currFilterCat.push({
-  //       name: item.name,
-  //       check: false
-  //     })
-  //   })
-
-  //   setFilterCat(currFilterCat)
-  // }, [])
 
   const handleFilterCat = catIndex => {
     let copyFilterCat = filterCat
@@ -191,8 +183,6 @@ function App() {
     onBeforeUpdateSchedule: handleUpdateSchedule,
     onBeforeDeleteSchedule: handleDeleteSchedule
   }
-
-  console.log(scheduleList)
 
   return (
     <div className="App">
