@@ -167,6 +167,13 @@ function App() {
     })
   })
 
+  //Custom schedule popup template
+  const schedPopupTemplate = {
+    titlePlaceholder: () => {
+      return 'Subject'
+    }
+  }
+
   //Set calendar features/options
   const calendarOptions = {
     usageStatistics: false,
@@ -178,6 +185,7 @@ function App() {
     useDetailPopup: true,
     useCreationPopup: true,
     schedules: scheduleList,
+    template: schedPopupTemplate,
     calendars: calendarCat,
     onBeforeCreateSchedule: handleCreateSchedule,
     onBeforeUpdateSchedule: handleUpdateSchedule,
@@ -206,10 +214,12 @@ function App() {
           <label key={index}><input type="checkbox" checked={item.check} onChange={() => handleFilterCat(index)}/>{item.name}</label>
         ))}
       </div>
+
       <Calendar
         ref={calendarRef}
         {...calendarOptions}
       />
+      
     </div>
   );
 }
