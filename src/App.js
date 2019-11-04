@@ -171,7 +171,7 @@ function App() {
   const schedPopupTemplate = {
     titlePlaceholder: () => {
       return 'Subject'
-    }
+    },
   }
 
   //Set calendar features/options
