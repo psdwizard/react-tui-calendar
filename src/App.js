@@ -5,7 +5,125 @@ import 'tui-calendar/dist/tui-calendar.css'
 import 'tui-date-picker/dist/tui-date-picker.css'
 import 'tui-time-picker/dist/tui-time-picker.css'
 
-function App() {
+export default function App() {
+  //Custom theme for the calendar
+  const customTheme = {
+    //Common style
+    'common.border': 'thin solid #796bbb',
+    'common.backgroundColor': '#161331',
+    'common.holiday.color': '#f54f3d',
+    'common.saturday.color': '#9d93d5',
+    'common.dayname.color': '#ffffff',
+
+    //Month header 'dayname'
+    'month.dayname.height': '42px',
+    'month.dayname.borderLeft': 'none',
+    'month.dayname.paddingLeft': '0',
+    'month.dayname.paddingRight': '0',
+    'month.dayname.fontSize': '13px',
+    'month.dayname.backgroundColor': 'inherit',
+    'month.dayname.fontWeight': 'normal',
+    'month.dayname.textAlign': 'center',
+
+    // month day grid cell 'day'
+    // 'month.holidayExceptThisMonth.color': '#f3acac',
+    'month.dayExceptThisMonth.color': '#ffffff42',
+    // 'month.weekend.backgroundColor': '#fafafa',
+    'month.day.fontSize': '16px',
+
+    // month schedule style
+    'month.schedule.borderRadius': '5px',
+    'month.schedule.height': '18px',
+    // 'month.schedule.marginTop': '2px',
+    'month.schedule.marginLeft': '10px',
+    'month.schedule.marginRight': '10px',
+
+    // month more view
+    // 'month.moreView.boxShadow': 'none',
+    // 'month.moreView.paddingBottom': '0',
+    // 'month.moreView.border': '1px solid #9384e1',
+    // 'month.moreView.backgroundColor': 'rgba(38,34,74,.49)',
+    // 'month.moreViewTitle.height': '28px',
+    // 'month.moreViewTitle.marginBottom': '0',
+    // 'month.moreViewTitle.backgroundColor': '#1b1539',
+    // 'month.moreViewTitle.borderBottom': '1px solid #9384e1',
+    // 'month.moreViewTitle.padding': '0 10px',
+    // 'month.moreViewList.padding': '10px',
+    // 'month.moreViewTitle.color': '#ffffff',
+
+    //  // week header 'dayname'
+    //  'week.dayname.height': '41px',
+    //  'week.dayname.borderTop': '1px solid #ddd',
+    //  'week.dayname.borderBottom': '1px solid #ddd',
+    //  'week.dayname.borderLeft': '1px solid #ddd',
+    //  'week.dayname.paddingLeft': '5px',
+    //  'week.dayname.backgroundColor': 'inherit',
+    'week.dayname.textAlign': 'center',
+    'week.today.color': '#00f298',
+    //  'week.pastDay.color': '#999',
+
+    //  // week vertical panel 'vpanel'
+    //  'week.vpanelSplitter.border': '1px solid #ddd',
+    //  'week.vpanelSplitter.height': '3px',
+
+    //  // week daygrid 'daygrid'
+    //  'week.daygrid.borderRight': '1px solid #ddd',
+    //  'week.daygrid.backgroundColor': 'inherit',
+
+    //  'week.daygridLeft.width': '77px',
+    //  'week.daygridLeft.backgroundColor': '#a8def74d',
+    //  'week.daygridLeft.paddingRight': '5px',
+    //  'week.daygridLeft.borderRight': '1px solid #ddd',
+
+    //  'week.today.backgroundColor': '#b857d81f',
+    //  'week.weekend.backgroundColor': 'inherit',
+
+    //  // week timegrid 'timegrid'
+    //  'week.timegridLeft.width': '77px',
+    'week.timegridLeft.backgroundColor': 'rgba(38, 34, 74, .49)',
+    //  'week.timegridLeft.borderRight': '1px solid #ddd',
+    //  'week.timegridLeft.fontSize': '12px',
+    //  'week.timegridLeftTimezoneLabel.height': '51px',
+    //  'week.timegridLeftAdditionalTimezone.backgroundColor': '#fdfdfd',
+
+    //  'week.timegridOneHour.height': '48px',
+    //  'week.timegridHalfHour.height': '24px',
+    //  'week.timegridHalfHour.borderBottom': '1px dotted #f9f9f9',
+    //  'week.timegridHorizontalLine.borderBottom': '1px solid #eee',
+
+    //  'week.timegrid.paddingRight': '10px',
+    //  'week.timegrid.borderRight': '1px solid #ddd',
+    //  'week.timegridSchedule.borderRadius': '0',
+    //  'week.timegridSchedule.paddingLeft': '0',
+
+    //  'week.currentTime.color': '#135de6',
+    //  'week.currentTime.fontSize': '12px',
+    //  'week.currentTime.fontWeight': 'bold',
+
+    //  'week.pastTime.color': '#808080',
+    //  'week.pastTime.fontWeight': 'normal',
+
+    //  'week.futureTime.color': '#333',
+    //  'week.futureTime.fontWeight': 'normal',
+
+    //  'week.currentTimeLinePast.border': '1px solid rgba(19, 93, 230, 0.3)',
+    //  'week.currentTimeLineBullet.backgroundColor': '#135de6',
+    //  'week.currentTimeLineToday.border': '1px solid #135de6',
+    //  'week.currentTimeLineFuture.border': '1px solid #135de6',
+
+    //  // week creation guide style
+    //  'week.creationGuide.color': '#135de6',
+    //  'week.creationGuide.fontSize': '12px',
+    //  'week.creationGuide.fontWeight': 'bold',
+
+    //  // week daygrid schedule style
+    //  'week.dayGridSchedule.borderRadius': '0',
+    //  'week.dayGridSchedule.height': '18px',
+    //  'week.dayGridSchedule.marginTop': '2px',
+    //  'week.dayGridSchedule.marginLeft': '10px',
+    //  'week.dayGridSchedule.marginRight': '10px'
+  }
+
   const calendarRef = createRef()
 
   //Set view of the calendar
@@ -89,20 +207,6 @@ function App() {
     setNewScheduleList([...copySchedule])
   }
 
-  //Delete schedule
-  const handleDeleteSchedule = event => {
-    const deleteId = event.schedule.id
-    let copySchedule = newScheduleList
-
-    copySchedule.forEach((item, index) => {
-      if (item.id === deleteId) {
-        copySchedule.splice(index, 1)
-      }
-    })
-
-    setNewScheduleList([...copySchedule])
-  }
-
   //Edit schedule
   const handleUpdateSchedule = event => {
     const updatedId = event.schedule.id
@@ -127,7 +231,21 @@ function App() {
     setNewScheduleList([...copySchedule])
   }
 
-  //Current Schedule
+  //Delete schedule
+  const handleDeleteSchedule = event => {
+    const deleteId = event.schedule.id
+    let copySchedule = newScheduleList
+
+    copySchedule.forEach((item, index) => {
+      if (item.id === deleteId) {
+        copySchedule.splice(index, 1)
+      }
+    })
+
+    setNewScheduleList([...copySchedule])
+  }
+
+  //Set current Schedule
   useEffect(() => {
     setSchedule(newScheduleList)
   }, [scheduleList, newScheduleList])
@@ -172,11 +290,15 @@ function App() {
     titlePlaceholder: () => {
       return 'Subject'
     },
+    raw: () => {
+      return '<input type="text" />'
+    }
   }
 
   //Set calendar features/options
   const calendarOptions = {
     usageStatistics: false,
+    theme: customTheme,
     taskView: false,
     scheduleView: true,
     view: currView,
@@ -223,5 +345,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
