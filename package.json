@@ -1,15 +1,17 @@
 {
   "name": "tui-calendar",
+  "homepage": "https://psdwizard.github.io/react-tui-calendar/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@toast-ui/react-calendar": "^1.0.4",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -28,5 +30,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@toast-ui/react-calendar": "^1.0.4",
+    "gh-pages": "^2.1.1"
   }
 }
