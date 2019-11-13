@@ -138,6 +138,7 @@ export default function App() {
     'week',
     'month'
   ]
+  
 
   //Preview and Next function for the calendar
   const handlePrevButton = () => {
