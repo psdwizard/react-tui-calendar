@@ -104,7 +104,7 @@ export default function App() {
     //  'week.pastTime.color': '#808080',
     //  'week.pastTime.fontWeight': 'normal',
 
-    //  'week.futureTime.color': '#333',
+    // 'week.futureTime.color': '#333',
     //  'week.futureTime.fontWeight': 'normal',
 
     //  'week.currentTimeLinePast.border': '1px solid rgba(19, 93, 230, 0.3)',
@@ -287,12 +287,15 @@ export default function App() {
     })
   })
 
-  //Custom schedule popup template
-  // const schedPopupTemplate = {
-  //   titlePlaceholder: () => {
-  //     return 'Subject'
-  //   }
-  // }
+  // Custom schedule popup template
+  const schedPopupTemplate = {
+    titlePlaceholder: () => {
+      return 'Subject'
+    },
+    alldayTitle: () => {
+      return '<span class="tui-full-calendar-left-content" style="color: #fff">All Day</span>'
+    },
+  }
 
   //Set calendar features/options
   const calendarOptions = {
@@ -306,7 +309,7 @@ export default function App() {
     useDetailPopup: true,
     useCreationPopup: true,
     schedules: scheduleList,
-    // template: schedPopupTemplate,
+    template: schedPopupTemplate,
     calendars: calendarCat,
     onBeforeCreateSchedule: handleCreateSchedule,
     onBeforeUpdateSchedule: handleUpdateSchedule,
