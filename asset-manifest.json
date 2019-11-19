@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-tui-calendar/static/css/main.0814d6ad.chunk.css",
-    "main.js": "/react-tui-calendar/static/js/main.91edbd11.chunk.js",
-    "main.js.map": "/react-tui-calendar/static/js/main.91edbd11.chunk.js.map",
+    "main.js": "/react-tui-calendar/static/js/main.73ddebf5.chunk.js",
+    "main.js.map": "/react-tui-calendar/static/js/main.73ddebf5.chunk.js.map",
     "runtime-main.js": "/react-tui-calendar/static/js/runtime-main.c8f1f6c7.js",
     "runtime-main.js.map": "/react-tui-calendar/static/js/runtime-main.c8f1f6c7.js.map",
     "static/css/2.269f51d2.chunk.css": "/react-tui-calendar/static/css/2.269f51d2.chunk.css",
     "static/js/2.7027967f.chunk.js": "/react-tui-calendar/static/js/2.7027967f.chunk.js",
     "static/js/2.7027967f.chunk.js.map": "/react-tui-calendar/static/js/2.7027967f.chunk.js.map",
     "index.html": "/react-tui-calendar/index.html",
-    "precache-manifest.ab6db79aadb80d936031ce0a91170159.js": "/react-tui-calendar/precache-manifest.ab6db79aadb80d936031ce0a91170159.js",
+    "precache-manifest.26926d28a3b2fa53bf8900566bce23d5.js": "/react-tui-calendar/precache-manifest.26926d28a3b2fa53bf8900566bce23d5.js",
     "service-worker.js": "/react-tui-calendar/service-worker.js",
     "static/css/2.269f51d2.chunk.css.map": "/react-tui-calendar/static/css/2.269f51d2.chunk.css.map",
     "static/css/main.0814d6ad.chunk.css.map": "/react-tui-calendar/static/css/main.0814d6ad.chunk.css.map"
@@ -19,6 +19,6 @@
     "static/css/2.269f51d2.chunk.css",
     "static/js/2.7027967f.chunk.js",
     "static/css/main.0814d6ad.chunk.css",
-    "static/js/main.91edbd11.chunk.js"
+    "static/js/main.73ddebf5.chunk.js"
   ]
 }
