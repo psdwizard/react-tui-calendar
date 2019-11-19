@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/react-tui-calendar/static/css/main.baa42074.chunk.css",
-    "main.js": "/react-tui-calendar/static/js/main.1cb8fed4.chunk.js",
-    "main.js.map": "/react-tui-calendar/static/js/main.1cb8fed4.chunk.js.map",
-    "runtime-main.js": "/react-tui-calendar/static/js/runtime-main.f8f5ba71.js",
-    "runtime-main.js.map": "/react-tui-calendar/static/js/runtime-main.f8f5ba71.js.map",
+    "main.css": "/react-tui-calendar/static/css/main.0814d6ad.chunk.css",
+    "main.js": "/react-tui-calendar/static/js/main.91edbd11.chunk.js",
+    "main.js.map": "/react-tui-calendar/static/js/main.91edbd11.chunk.js.map",
+    "runtime-main.js": "/react-tui-calendar/static/js/runtime-main.c8f1f6c7.js",
+    "runtime-main.js.map": "/react-tui-calendar/static/js/runtime-main.c8f1f6c7.js.map",
     "static/css/2.269f51d2.chunk.css": "/react-tui-calendar/static/css/2.269f51d2.chunk.css",
-    "static/js/2.400e0b98.chunk.js": "/react-tui-calendar/static/js/2.400e0b98.chunk.js",
-    "static/js/2.400e0b98.chunk.js.map": "/react-tui-calendar/static/js/2.400e0b98.chunk.js.map",
+    "static/js/2.7027967f.chunk.js": "/react-tui-calendar/static/js/2.7027967f.chunk.js",
+    "static/js/2.7027967f.chunk.js.map": "/react-tui-calendar/static/js/2.7027967f.chunk.js.map",
     "index.html": "/react-tui-calendar/index.html",
-    "precache-manifest.c5a2299000cbe54e6e38dd8fcd00c75e.js": "/react-tui-calendar/precache-manifest.c5a2299000cbe54e6e38dd8fcd00c75e.js",
+    "precache-manifest.ab6db79aadb80d936031ce0a91170159.js": "/react-tui-calendar/precache-manifest.ab6db79aadb80d936031ce0a91170159.js",
     "service-worker.js": "/react-tui-calendar/service-worker.js",
     "static/css/2.269f51d2.chunk.css.map": "/react-tui-calendar/static/css/2.269f51d2.chunk.css.map",
-    "static/css/main.baa42074.chunk.css.map": "/react-tui-calendar/static/css/main.baa42074.chunk.css.map"
+    "static/css/main.0814d6ad.chunk.css.map": "/react-tui-calendar/static/css/main.0814d6ad.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.f8f5ba71.js",
+    "static/js/runtime-main.c8f1f6c7.js",
     "static/css/2.269f51d2.chunk.css",
-    "static/js/2.400e0b98.chunk.js",
-    "static/css/main.baa42074.chunk.css",
-    "static/js/main.1cb8fed4.chunk.js"
+    "static/js/2.7027967f.chunk.js",
+    "static/css/main.0814d6ad.chunk.css",
+    "static/js/main.91edbd11.chunk.js"
   ]
 }

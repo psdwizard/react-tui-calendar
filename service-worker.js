@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-tui-calendar/precache-manifest.c5a2299000cbe54e6e38dd8fcd00c75e.js"
+  "/react-tui-calendar/precache-manifest.ab6db79aadb80d936031ce0a91170159.js"
 );
 
 self.addEventListener('message', (event) => {
