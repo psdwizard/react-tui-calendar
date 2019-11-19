@@ -6,6 +6,7 @@ import 'tui-date-picker/dist/tui-date-picker.css'
 import 'tui-time-picker/dist/tui-time-picker.css'
 
 export default function App() {
+  
   //Custom theme for the calendar
   const customTheme = {
     //Common style
@@ -138,7 +139,7 @@ export default function App() {
     'week',
     'month'
   ]
-  
+
 
   //Preview and Next function for the calendar
   const handlePrevButton = () => {
@@ -287,14 +288,11 @@ export default function App() {
   })
 
   //Custom schedule popup template
-  const schedPopupTemplate = {
-    titlePlaceholder: () => {
-      return 'Subject'
-    },
-    raw: () => {
-      return '<input type="text" />'
-    }
-  }
+  // const schedPopupTemplate = {
+  //   titlePlaceholder: () => {
+  //     return 'Subject'
+  //   }
+  // }
 
   //Set calendar features/options
   const calendarOptions = {
@@ -308,12 +306,14 @@ export default function App() {
     useDetailPopup: true,
     useCreationPopup: true,
     schedules: scheduleList,
-    template: schedPopupTemplate,
+    // template: schedPopupTemplate,
     calendars: calendarCat,
     onBeforeCreateSchedule: handleCreateSchedule,
     onBeforeUpdateSchedule: handleUpdateSchedule,
     onBeforeDeleteSchedule: handleDeleteSchedule
   }
+
+  console.log(scheduleList)
 
   return (
     <div className="App">
@@ -337,12 +337,10 @@ export default function App() {
           <label key={index}><input type="checkbox" checked={item.check} onChange={() => handleFilterCat(index)}/>{item.name}</label>
         ))}
       </div>
-
       <Calendar
         ref={calendarRef}
         {...calendarOptions}
       />
-      
     </div>
   );
 }
