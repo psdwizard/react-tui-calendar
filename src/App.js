@@ -310,10 +310,8 @@ export default function App() {
     calendars: calendarCat,
     onBeforeCreateSchedule: handleCreateSchedule,
     onBeforeUpdateSchedule: handleUpdateSchedule,
-    onBeforeDeleteSchedule: handleDeleteSchedule
+    onBeforeDeleteSchedule: handleDeleteSchedule,
   }
-
-  console.log(scheduleList)
 
   return (
     <div className="App">
