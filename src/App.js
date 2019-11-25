@@ -313,7 +313,7 @@ export default function App() {
     calendars: calendarCat,
     onBeforeCreateSchedule: handleCreateSchedule,
     onBeforeUpdateSchedule: handleUpdateSchedule,
-    onBeforeDeleteSchedule: handleDeleteSchedule,
+    onBeforeDeleteSchedule: handleDeleteSchedule
   }
 
   return (
